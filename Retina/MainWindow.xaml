@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Retina"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,11 +18,16 @@
                 <MenuItem Header="_Save" Name="save" Click="Save_Click"/>
                 <MenuItem Header="_Exit" Name="exit" Click="Exit_Click"/>
             </MenuItem>
-            <MenuItem Header="_Binarization" MinWidth="75" >
+            <!--<MenuItem Header="_Binarization" MinWidth="75" >
                 <MenuItem Header="_Otsu" Name="otsu" Click="Otsu_Click" />
                 <MenuItem Header="_Thereshold" Name="theresholdBin" Click="TheresholdBin_Click" />
-            </MenuItem>
-            <MenuItem Header="Gray scale" MinWidth="75" Name="grayScale" Click="GrayScale_Click"/>
+            </MenuItem>-->
+            <MenuItem Header="Odcienie szarosci" MinWidth="75" Name="grayScale" Click="GrayScale_Click"/>
+            <MenuItem Header="Rozmycie obrazu" MinWidth="75" Name="Rozmycie" Click="Rozmycie_Click"/>
+            <MenuItem Header="Odjęcie obrazu" MinWidth="75" Name="Odjecie" Click="Odjecie_Click"/>
+            <MenuItem Header="Otsu" MinWidth="75" Name="Otsu" Click="Otsu_Click"/>
+            <MenuItem Header="Medianowy" MinWidth="75" Name="Medianowy" Click="Medianowy_Click"/>
+            <MenuItem Header="Zamkniecie morfologiczne" MinWidth="75" Name="Zamkniecie_morfologiczne" Click="Zamkniecie_morfologiczne_Click"/>
             <MenuItem Header="Szkieletyzacja" MinWidth="75" Name="szkieletyzacja" Click="Szkieletyzacja_Click" />
             <MenuItem Header="Rozgalezienia" MinWidth="75" Name="galezie" Click="Rozgalezienia_Click" />
             <MenuItem Header="Usuń minucje" MinWidth="75" Name="usuwanie_minucji" Click="Usuwanie_minucji_Click" />

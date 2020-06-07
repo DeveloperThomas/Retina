@@ -57,7 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FiltrMedianowy.cs" />
+    <Compile Include="OdjecieObrazu.cs" />
     <Compile Include="Rozgalezienia.cs" />
+    <Compile Include="RozmycieObrazu.cs" />
     <Compile Include="Szkieletyzacja.cs" />
     <Compile Include="UsuniecieMinucji.cs" />
     <Page Include="ExtraWindows\TheresholDInput.xaml">

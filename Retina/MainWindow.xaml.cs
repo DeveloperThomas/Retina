@@ -38,6 +38,7 @@ namespace Retina
         List<System.Drawing.Point> forksList = new List<System.Drawing.Point>();
         List<System.Drawing.Point> intersectionsList = new List<System.Drawing.Point>();
 
+        Bitmap ZapisanyRozmytyObraz;
         public MainWindow()
         {
             InitializeComponent();
@@ -188,7 +189,7 @@ namespace Retina
 
         private void GrayScale_Click(object sender, RoutedEventArgs e)
         {
-            var tmp = GrayScale.GetInstance().TurnIntoGray(Img);
+            var tmp = GrayScale.GetInstance().TurnIntoGrayWithGreen(Img);
             Img = tmp;
             UpdateImageOnScreen();
         }
@@ -249,6 +250,41 @@ namespace Retina
                 MessageBox.Show(ex.Message);
             }
             UpdateImageOnScreen();
+        }
+
+        private void Rozmycie_Click(object sender, RoutedEventArgs e)
+        {
+            ZapisanyRozmytyObraz = RozmycieObrazu.GetInstance().RozmyjObraz(Img);
+            MessageBox.Show("Rozmycie obrazu zakonczone i zapisane w zmiennej");
+        }
+
+        private void Odjecie_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp =  OdjecieObrazu.GetInstance().OdjecieRozmytegoOdOryginalu(Img, ZapisanyRozmytyObraz);
+            if (tmp == null)
+            {
+                MessageBox.Show("Któryś z obrazów jest nullem!!");
+                return;
+            }
+            Img = tmp;
+            UpdateImageOnScreen();
+        }
+
+        private void Zamkniecie_morfologiczne_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Medianowy_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = FiltrMedianowy.GetInstance().PrzeprowadzFiltrMedianowy(Img);
+            Img = tmp;
+            UpdateImageOnScreen();
+        }
+
+        private void Otsu_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
