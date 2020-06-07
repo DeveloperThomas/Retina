@@ -1,0 +1,19 @@
+﻿<Window x:Class="Retina.ExtraWindows.TheresholdInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Retina.ExtraWindows"
+        mc:Ignorable="d"
+        Title="TheresholdInput" Height="200" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" VerticalAlignment="Center">Thereshold</TextBlock>
+        <TextBox Grid.Column="1" VerticalAlignment="Center" Name="theresholdValue" TextAlignment="Center" >100</TextBox>
+        <Button Name="Ok" Grid.Column="2" VerticalAlignment="Center" MinWidth="75" Click="Ok_Click">Ok</Button>
+    </Grid>
+</Window>

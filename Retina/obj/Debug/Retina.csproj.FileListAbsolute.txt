@@ -1,0 +1,17 @@
+C:\Users\rakieta\source\repos\Retina\Retina\bin\Debug\Retina.exe.config
+C:\Users\rakieta\source\repos\Retina\Retina\bin\Debug\Retina.exe
+C:\Users\rakieta\source\repos\Retina\Retina\bin\Debug\Retina.pdb
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina.csprojAssemblyReference.cache
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\ExtraWindows\TheresholDInput.g.cs
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\MainWindow.g.cs
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\App.g.cs
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina_MarkupCompile.cache
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina_MarkupCompile.lref
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\ExtraWindows\TheresholDInput.baml
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\MainWindow.baml
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina.g.resources
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina.Properties.Resources.resources
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina.csproj.GenerateResource.cache
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina.csproj.CoreCompileInputs.cache
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina.exe
+C:\Users\rakieta\source\repos\Retina\Retina\obj\Debug\Retina.pdb
