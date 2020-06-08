@@ -28,7 +28,7 @@
             <MenuItem Header="Otsu" MinWidth="75" Name="Otsu" Click="Otsu_Click"/>
             <MenuItem Header="Medianowy" MinWidth="75" Name="Medianowy" Click="Medianowy_Click"/>
             <MenuItem Header="Zamkniecie morfologiczne" MinWidth="75" Name="Zamkniecie_morfologiczne" Click="Zamkniecie_morfologiczne_Click"/>
-            <MenuItem Header="Szkieletyzacja" MinWidth="75" Name="szkieletyzacja" Click="Szkieletyzacja_Click" />
+            <MenuItem Header="Szkieletyzacja K3M" MinWidth="75" Name="szkieletyzacja" Click="Szkieletyzacja_Click" />
             <MenuItem Header="Rozgalezienia" MinWidth="75" Name="galezie" Click="Rozgalezienia_Click" />
             <MenuItem Header="Usuń minucje" MinWidth="75" Name="usuwanie_minucji" Click="Usuwanie_minucji_Click" />
         </Menu>

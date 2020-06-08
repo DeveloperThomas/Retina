@@ -42,6 +42,7 @@ namespace Retina
 
 
             byte[] data = new byte[size];// tablica z wartościami RGB
+            byte[] newData = new byte[size];// tablica z wartościami RGB
             for (int y = 0; y < bitmapData.Height; y++)
             {
                 IntPtr mem = (IntPtr)((long)bitmapData.Scan0 + y * bitmapData.Stride);
@@ -110,9 +111,9 @@ namespace Retina
                     secondIndex = 0;// poczatek 
                 }
 
-                data[l] = (byte)binValueR;
-                data[l + 1] = (byte)binValueG;
-                data[l + 2] = (byte)binValueB;
+                newData[l] = (byte)binValueR;
+                newData[l + 1] = (byte)binValueG;
+                newData[l + 2] = (byte)binValueB;
 
             }
            
@@ -124,7 +125,22 @@ namespace Retina
 
             Img.UnlockBits(bitmapData);
 
-            return Img;
+
+            Bitmap Rozmyty = new Bitmap(bitmapData.Width, bitmapData.Height);
+            Rectangle newRect = new Rectangle(0, 0, Img.Width, Img.Height);
+            BitmapData rozmytyBitmapData = Rozmyty.LockBits(newRect, ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            IntPtr rozmytyWskaznik = rozmytyBitmapData.Scan0;
+
+            for (int y = 0; y < rozmytyBitmapData.Height; y++)
+            {
+                IntPtr mem = (IntPtr)((long)rozmytyBitmapData.Scan0 + y * rozmytyBitmapData.Stride);
+                Marshal.Copy(newData, y * rozmytyBitmapData.Width * 3, mem, rozmytyBitmapData.Width * 3);// skopiuj całą bitmapę do tablicy
+            }
+
+            Rozmyty.UnlockBits(rozmytyBitmapData);
+
+            return Rozmyty;
         }
 
 
