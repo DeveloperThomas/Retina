@@ -29,6 +29,32 @@ namespace Retina
 
         public Bitmap OtsuMethod(Bitmap Image, bool isTopThereshold)
         {
+            int[] hist = new int[256];
+            hist = Histogram.GetInstance().CreateHistogram(Image, 0);
+            double p1, p2;
+            double[] VarianceBetweenTable = new double[256];
+
+            int MeanIAll = MeanIntensitiesK(0, 255, hist); //mean intensivities of pixels in the whole image.
+
+            for (int k = 1; k < 256; k++)
+            {
+                p1 = ProbabilityK(0, k, hist) * Math.Pow((MeanIntensitiesK(0, k, hist) - MeanIAll), 2);
+                p2 = ProbabilityK(k + 1, 255, hist) * Math.Pow((MeanIntensitiesK(k + 1, 255, hist) - MeanIAll), 2);
+                if (p1 == 0)
+                    p1 = 1;
+                if (p2 == 0)
+                    p2 = 1;
+
+                VarianceBetweenTable[k] = p1 + p2;
+            }
+
+            int point = FindMaximum(VarianceBetweenTable);
+
+            return BinarizeThereshol(Image, point, isTopThereshold);
+        }
+
+        public Bitmap OtsuMethod2(Bitmap Image, bool isTopThereshold)
+        {
             int[] histogramArray = new int[256];
             histogramArray = Histogram.GetInstance().CreateHistogram(Image, 0);
             int N = Image.Width * Image.Height;
@@ -155,7 +181,7 @@ namespace Retina
 
             for (int i = 0; i < size; i += 3)// kazda komórka zawiera jedną z trzech wartości- więc przesuwa się co 3 pixele
             {
-                if (data[i] >= point)
+                if (data[i] > point)
                 {
                     data[i] = (isTopThereshold) ? (byte)255 : (byte)0;
                     data[i + 1] = (isTopThereshold) ? (byte)255 : (byte)0;

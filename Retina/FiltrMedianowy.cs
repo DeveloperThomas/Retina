@@ -28,7 +28,7 @@ namespace Retina
 
         public Bitmap PrzeprowadzFiltrMedianowy(Bitmap Img)
         {
-            int windowWidth = 5;
+            int windowWidth = 7;
 
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(0, 0, Img.Width, Img.Height);
             BitmapData bitmapData = Img.LockBits(rect, ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);

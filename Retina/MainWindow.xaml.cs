@@ -170,7 +170,7 @@ namespace Retina
 
         private void Otsu_Click(object sender, RoutedEventArgs e)
         {
-            var image = Binarization.GetInstance().OtsuMethod(Img, true);/// to zmienić na true żeby zamienić kolory na przeciwne
+            var image = Binarization.GetInstance().OtsuMethod(Img, false);/// to zmienić na true żeby zamienić kolory na przeciwne
             Img = image;
             UpdateImageOnScreen();
         }
@@ -198,7 +198,7 @@ namespace Retina
         {
             //try
             //{
-                var tmp = SzkieletyzacjaK3M.GetInstance().UseK3M(Img);
+            var tmp = Szkieletyzacja.GetInstance().Szkieletyzuj(Img);
                 Img = tmp;
                 MessageBox.Show("Operacja zakończona.");
             //}
@@ -286,19 +286,19 @@ namespace Retina
             UpdateImageOnScreen();
         }
 
-        //private void Uruchom_proces_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ZapisanyRozmytyObraz = RozmycieObrazu.GetInstance().RozmyjObraz(Img);
-        //    var tmp = OdjecieObrazu.GetInstance().OdjecieRozmytegoOdOryginalu(Img, ZapisanyRozmytyObraz);
-        //    Img = tmp;
-        //    var image = Binarization.GetInstance().OtsuMethod(Img, true);/// to zmienić na true żeby zamienić kolory na przeciwne
-        //    Img = image;
-        //    tmp = FiltrMedianowy.GetInstance().PrzeprowadzFiltrMedianowy(Img);
-        //    Img = tmp;
-        //    tmp = Dylatacja.GetInstance().Dilation(Img);
-        //    Img = tmp;
-        //    tmp = SzkieletyzacjaK3M.GetInstance().UseK3M(Img);
-        //    Img = tmp;
-        //}
+        private void Uruchom_proces_Click(object sender, RoutedEventArgs e)
+        {
+            ZapisanyRozmytyObraz = RozmycieObrazu.GetInstance().RozmyjObraz(Img);
+            var tmp = OdjecieObrazu.GetInstance().OdjecieRozmytegoOdOryginalu(Img, ZapisanyRozmytyObraz);
+            Img = tmp;
+            var image = Binarization.GetInstance().OtsuMethod(Img, true);/// to zmienić na true żeby zamienić kolory na przeciwne
+            Img = image;
+            tmp = FiltrMedianowy.GetInstance().PrzeprowadzFiltrMedianowy(Img);
+            Img = tmp;
+            tmp = Dylatacja.GetInstance().Dilation(Img);
+            Img = tmp;
+            tmp = SzkieletyzacjaK3M.GetInstance().UseK3M(Img);
+            Img = tmp;
+        }
     }
 }
