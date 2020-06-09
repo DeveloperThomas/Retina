@@ -26,14 +26,14 @@ namespace Retina
 
 
 
-        public Bitmap RozmyjObraz(Bitmap Img)
+        public Bitmap RozmyjObraz(Bitmap Img, int edgeValue=7)
         {
 
             if (Img == null)
                 return null;
 
             int matrixSum = 49;// maska wypełniona jedynkami
-            int edgeValue = 7;
+
 
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(0, 0, Img.Width, Img.Height);
             BitmapData bitmapData = Img.LockBits(rect, ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
@@ -156,7 +156,7 @@ namespace Retina
             {
                 for (Int32 x = 0; x < area.Width; ++x)
                 {
-                    sum += (allArea[y + area.Y, x + area.X] * 1);
+                    sum += (allArea[y + area.Y, x + area.X] * -1);
                     //result[allArea[y + area.Y, x + area.X]]++;
                 }
             }

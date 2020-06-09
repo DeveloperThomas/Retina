@@ -65,7 +65,7 @@ namespace Retina
             for (int i = 0; i < Rozmytysize; i+=3)
             {
 
-                int newValue = OriginalData[i] - RozmytyData[i];
+                int newValue = RozmytyData[i] - OriginalData[i];
 
                 if (newValue < 0)
                 {

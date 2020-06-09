@@ -149,7 +149,6 @@ namespace Retina
 
 
                                         tmpImageInArray[i, j] = DeleteIfInTable(new Point(j, i), imageIn2DTable, ref deletedSth, PhaseList[phase]);
-
                                     }
                                 }
                             }
@@ -198,7 +197,7 @@ namespace Retina
                         // pixel ma wyamaganą wielkośc okna - nie sa brane pod uwage pixele koło krawędzi
                         if (!(i - halfEdge < 0 || i + halfEdge >= Img.Height || j - halfEdge < 0 || j + halfEdge >= Img.Width))
                         {
-                            if (imageIn2DTable[i, j] !=0)// jeżeli jest to pixel z brzegu
+                            if (imageIn2DTable[i, j] != 0)// jeżeli jest to pixel z brzegu
                             {
                                 // i pierwszy argument oznacza Y
                                 // j drugi argument oznacza X 

@@ -89,18 +89,18 @@ namespace Retina
             //            maxCoordsDifference = Math.Abs(i + j) + 2;
             //            for (int k = i - halfEdge; k < i + halfEdge; k++)
             //            {
-            //                for(int l = j - halfEdge; l < j + halfEdge; l++)
+            //                for (int l = j - halfEdge; l < j + halfEdge; l++)
             //                {
-            //                    if(Math.Abs(k + l) <= maxCoordsDifference)
-            //                    {
-            //                        if(imageIn2DTable[k, l] == 0)
+            //                    //if (Math.Abs(k + l) <= maxCoordsDifference)
+            //                    //{
+            //                        if (imageIn2DTable[k, l] == 0)
             //                        {
             //                            changePixelFlag = true;
             //                        }
-            //                    }
+            //                   // }
 
             //                }
-            //                if(changePixelFlag)
+            //                if (changePixelFlag)
             //                {
             //                    break;
             //                }
