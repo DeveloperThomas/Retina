@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dylatacja.cs" />
     <Compile Include="FiltrMedianowy.cs" />
     <Compile Include="OdjecieObrazu.cs" />
     <Compile Include="Rozgalezienia.cs" />
