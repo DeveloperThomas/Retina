@@ -274,7 +274,9 @@ namespace Retina
 
         private void Zamkniecie_morfologiczne_Click(object sender, RoutedEventArgs e)
         {
-
+            var tmp = Dylatacja.GetInstance().Dilation(Img);
+            Img = tmp;
+            UpdateImageOnScreen();
         }
 
         private void Medianowy_Click(object sender, RoutedEventArgs e)
@@ -284,5 +286,19 @@ namespace Retina
             UpdateImageOnScreen();
         }
 
+        //private void Uruchom_proces_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ZapisanyRozmytyObraz = RozmycieObrazu.GetInstance().RozmyjObraz(Img);
+        //    var tmp = OdjecieObrazu.GetInstance().OdjecieRozmytegoOdOryginalu(Img, ZapisanyRozmytyObraz);
+        //    Img = tmp;
+        //    var image = Binarization.GetInstance().OtsuMethod(Img, true);/// to zmienić na true żeby zamienić kolory na przeciwne
+        //    Img = image;
+        //    tmp = FiltrMedianowy.GetInstance().PrzeprowadzFiltrMedianowy(Img);
+        //    Img = tmp;
+        //    tmp = Dylatacja.GetInstance().Dilation(Img);
+        //    Img = tmp;
+        //    tmp = SzkieletyzacjaK3M.GetInstance().UseK3M(Img);
+        //    Img = tmp;
+        //}
     }
 }

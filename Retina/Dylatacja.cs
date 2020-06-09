@@ -45,24 +45,91 @@ namespace Retina
 
             int maskSize = 5;
             int halfEdge = maskSize / 2;
+            bool changePixelFlag = false;
+            int maxCoordsDifference;
 
 
             for (int i = 0; i < Img.Height; i++)
             {
                 for (int j = 0; j < Img.Width; j++)
                 {
+                    changePixelFlag = false;
                     if (!(i - halfEdge < 0 || i + halfEdge >= Img.Height || j - halfEdge < 0 || j + halfEdge >= Img.Width))
                     {
-                        
+                        maxCoordsDifference = Math.Abs(i + j) + 2;
+                        for (int k = i - halfEdge; k < i + halfEdge; k++)
+                        {
+                            for (int l = j - halfEdge; l < j + halfEdge; l++)
+                            {
+                                if (Math.Abs(k + l) <= maxCoordsDifference)
+                                {
+                                    if (imageIn2DTable[k, l] == 1)
+                                    {
+                                        changePixelFlag = true;
+                                    }
+                                }
+                            }
+                            if (changePixelFlag)
+                            {
+                                break;
+                            }
+                        }
+                        if (changePixelFlag)
+                        {
+                            tmpImageInArray[i, j] = 1;
+                        }
                     }
                 }
             }
 
+            for (int i = 0; i < Img.Height; i++)
+            {
+                for (int j = 0; j < Img.Width; j++)
+                {
+                    changePixelFlag = false;
+                    if (!(i - halfEdge < 0 || i + halfEdge >= Img.Height || j - halfEdge < 0 || j + halfEdge >= Img.Width))
+                    {
+                        maxCoordsDifference = Math.Abs(i + j) + 2;
+                        for (int k = i - halfEdge; k < i + halfEdge; k++)
+                        {
+                            for(int l = j - halfEdge; l < j + halfEdge; l++)
+                            {
+                                if(Math.Abs(k + l) <= maxCoordsDifference)
+                                {
+                                    if(imageIn2DTable[k, l] == 0)
+                                    {
+                                        changePixelFlag = true;
+                                    }
+                                }
 
+                            }
+                            if(changePixelFlag)
+                            {
+                                break;
+                            }
+                        }
+                        if (changePixelFlag)
+                        {
+                            tmpImageInArray[i, j] = 0;
+                        }
+                    }
+                }
+            }
 
+            data = Functions.GetInstance().CreateBytetableFrom2DImage(tmpImageInArray, size, bitmapData.Width, bitmapData.Height);
 
+            for (int i = 0; i < size; i++)
+            {
+                if (data[i] != 0)
+                {
+                    data[i] = 0;
+                }
+                else
+                {
+                    data[i] = 255;
+                }
+            }
 
-                            data = Functions.GetInstance().CreateBytetableFrom2DImage(tmpImageInArray, size, bitmapData.Width, bitmapData.Height);
 
             for (int y = 0; y < bitmapData.Height; y++)
             {

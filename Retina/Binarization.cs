@@ -29,26 +29,73 @@ namespace Retina
 
         public Bitmap OtsuMethod(Bitmap Image, bool isTopThereshold)
         {
-            int[] hist = new int[256];
-            hist = Histogram.GetInstance().CreateHistogram(Image, 0);
-            double p1, p2;
-            double[] VarianceBetweenTable = new double[256];
+            int[] histogramArray = new int[256];
+            histogramArray = Histogram.GetInstance().CreateHistogram(Image, 0);
+            int N = Image.Width * Image.Height;
+            double Wb = 0.0;
+            double Wf = 0.0;
+            double VarianceB = 0.0;
+            double VarianceF = 0.0;
+            double GammaB = 0.0;
+            double GammaF = 0.0;
+            double[] minimumValues = new double[256];
 
-            int MeanIAll = MeanIntensitiesK(0, 255, hist); //mean intensivities of pixels in the whole image.
-
-            for (int k = 1; k < 256; k++)
+            for (int T = 0; T < 256; T++)
             {
-                p1 = ProbabilityK(0, k, hist) * Math.Pow((MeanIntensitiesK(0, k, hist) - MeanIAll), 2);
-                p2 = ProbabilityK(k + 1, 255, hist) * Math.Pow((MeanIntensitiesK(k + 1, 255, hist) - MeanIAll), 2);
-                if (p1 == 0)
-                    p1 = 1;
-                if (p2 == 0)
-                    p2 = 1;
+                Wb = 0.0;
+                Wf = 0.0;
+                VarianceB = 0.0;
+                VarianceF = 0.0;
+                GammaB = 0.0;
+                GammaF = 0.0;
+                for (int i = 0; i <= (T - 1); i++)
+                {
+                    Wb += histogramArray[i] / (double)N;
+                }
 
-                VarianceBetweenTable[k] = p1 + p2;
+                for (int i = 0; i <= (T - 1); i++)
+                {
+                    GammaB += i * (histogramArray[i] / (double)N) / Wb;
+                }
+
+                for (int i = T; i <= 255; i++)
+                {
+                    Wf += histogramArray[i] / (double)N;
+                }
+
+                for (int i = T; i <= 255; i++)
+                {
+                    GammaF += i * (histogramArray[i] / (double)N) / Wf;
+                }
+
+                for (int i = 0; i <= (T - 1); i++)
+                {
+                    VarianceB += (histogramArray[i] * (double)N) * (Math.Pow((i - GammaB), 2) / Wb);
+                }
+
+                for (int i = T; i <= 255; i++)
+                {
+                    VarianceF += (histogramArray[i] * (double)N) * (Math.Pow((i - GammaF), 2) / Wf);
+                }
+
+                double currentValue = (Wf * Math.Pow(VarianceF, 2)) + (Wb * Math.Pow(VarianceB, 2));
+
+                minimumValues[T] = currentValue;
             }
 
-            int point = FindMaximum(VarianceBetweenTable);
+            double minimumValue = minimumValues[0];
+            int threshold = 0;
+
+            for (int i = 1; i < 256; i++)
+            {
+                if (minimumValues[i] < minimumValue)
+                {
+                    minimumValue = minimumValues[i];
+                    threshold = i;
+                }
+            }
+
+            int point = threshold;
 
             return BinarizeThereshol(Image, point, isTopThereshold);
         }
@@ -108,7 +155,7 @@ namespace Retina
 
             for (int i = 0; i < size; i += 3)// kazda komórka zawiera jedną z trzech wartości- więc przesuwa się co 3 pixele
             {
-                if (data[i] > point)
+                if (data[i] >= point)
                 {
                     data[i] = (isTopThereshold) ? (byte)255 : (byte)0;
                     data[i + 1] = (isTopThereshold) ? (byte)255 : (byte)0;

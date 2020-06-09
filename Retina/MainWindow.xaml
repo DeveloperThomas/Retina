@@ -31,6 +31,7 @@
             <MenuItem Header="Szkieletyzacja K3M" MinWidth="75" Name="szkieletyzacja" Click="Szkieletyzacja_Click" />
             <MenuItem Header="Rozgalezienia" MinWidth="75" Name="galezie" Click="Rozgalezienia_Click" />
             <MenuItem Header="Usuń minucje" MinWidth="75" Name="usuwanie_minucji" Click="Usuwanie_minucji_Click" />
+            <MenuItem Header="Uruchom cały proces" MinWidth="75" Name="uruchom_proces" Click="Uruchom_proces_Click" />
         </Menu>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
