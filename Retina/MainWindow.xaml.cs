@@ -170,7 +170,7 @@ namespace Retina
 
         private void Otsu_Click(object sender, RoutedEventArgs e)
         {
-            var image = Binarization.GetInstance().OtsuMethod(Img, true);
+            var image = Binarization.GetInstance().OtsuMethod(Img, true);/// to zmienić na true żeby zamienić kolory na przeciwne
             Img = image;
             UpdateImageOnScreen();
         }
@@ -196,18 +196,17 @@ namespace Retina
 
         private void Szkieletyzacja_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var tmp = Szkieletyzacja.GetInstance().Szkieletyzuj(Img);
+            //try
+            //{
+                var tmp = SzkieletyzacjaK3M.GetInstance().UseK3M(Img);
                 Img = tmp;
                 MessageBox.Show("Operacja zakończona.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
 
-            }
-
+            //}
 
             UpdateImageOnScreen();
         }
@@ -256,6 +255,8 @@ namespace Retina
         {
             ZapisanyRozmytyObraz = RozmycieObrazu.GetInstance().RozmyjObraz(Img);
             MessageBox.Show("Rozmycie obrazu zakonczone i zapisane w zmiennej");
+            UpdateImageOnScreen();
+
         }
 
         private void Odjecie_Click(object sender, RoutedEventArgs e)
@@ -267,6 +268,7 @@ namespace Retina
                 return;
             }
             Img = tmp;
+            MessageBox.Show("Odjęcie wykonane!");
             UpdateImageOnScreen();
         }
 
@@ -282,9 +284,5 @@ namespace Retina
             UpdateImageOnScreen();
         }
 
-        private void Otsu_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

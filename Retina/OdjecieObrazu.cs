@@ -64,18 +64,20 @@ namespace Retina
 
             for (int i = 0; i < Rozmytysize; i+=3)
             {
+
                 int newValue = OriginalData[i] - RozmytyData[i];
+
                 if (newValue < 0)
                 {
                     RozmytyData[i] = 0;
-                    RozmytyData[i+1] = 0;
-                    RozmytyData[i+2] = 0;
+                    RozmytyData[i + 1] = 0;
+                    RozmytyData[i + 2] = 0;
                 }
                 else
                 {
                     RozmytyData[i] = (byte)newValue;
-                    RozmytyData[i+1] = (byte)newValue;
-                    RozmytyData[i+2] = (byte)newValue;
+                    RozmytyData[i + 1] = (byte)newValue;
+                    RozmytyData[i + 2] = (byte)newValue;
                 }
             }
 

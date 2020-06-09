@@ -63,6 +63,7 @@
     <Compile Include="Rozgalezienia.cs" />
     <Compile Include="RozmycieObrazu.cs" />
     <Compile Include="Szkieletyzacja.cs" />
+    <Compile Include="SzkieletyzacjaK3M.cs" />
     <Compile Include="UsuniecieMinucji.cs" />
     <Page Include="ExtraWindows\TheresholDInput.xaml">
       <SubType>Designer</SubType>

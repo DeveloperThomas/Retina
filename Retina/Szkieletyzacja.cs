@@ -140,10 +140,6 @@ namespace Retina
 
 
 
-            // sprawdzić czy powstał szkielet jedno poxelowy -jak? chuj wie 
-            // jeżeli powstał to koniec, jeżell nie to wykonujemy pentle jeszcze ta , - da sie tutaj do while...
-
-
             data = Functions.GetInstance().CreateBytetableFrom2DImage(tmpImageInArray, size, bitmapData.Width, bitmapData.Height);
 
             for (int i = 0; i < size; i++)
